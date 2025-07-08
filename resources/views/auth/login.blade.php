@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 
-@section('title', 'Login | E-commerce')
+@section('title', 'Login | Real Time Chat')
 
 @section('auth-content')
 <div class="row justify-content-center">

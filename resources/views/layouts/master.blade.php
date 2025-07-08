@@ -7,7 +7,7 @@
 </head>
 <body class="bg-light">
     <div class="container py-5">
-        <h2 class="text-center mb-4 text-secondary">Steadfast E-Commerce</h2>
+        <h2 class="text-center mb-4 text-secondary">Real Time Chat App</h2>
         @yield('auth-content')
     </div>
 

@@ -10,18 +10,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
-                    <br>
-{{-- 
-                    <form method="POST" target="_blank" action="{{ route('sso.redirect.foodpanda') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">
-                            Login FoodPanda
-                        </button>
-                    </form> --}}
-
-                    {{-- <button class="mt-5">
-                        <a href="http://127.0.0.1:8001/dashboard" target="_blank">Login FoodPanda Account</a>
-                    </button> --}}
                 </div>
             </div>
         </div>

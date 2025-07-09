@@ -1,203 +1,61 @@
-# 📦 Inventory & Financial Reporting System
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-A Laravel-based simple Inventory Management System integrated with Accounting Journals and Financial Reporting. This application helps small businesses track product stock, sales, and generate financial reports with VAT, discount, and due calculations.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
----
+## About Laravel
 
-## 📚 Project Overview
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-This system was built as part of an assessment to demonstrate understanding of inventory handling, sales processing, accounting integration and report generation.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
----
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## 📁 Demo Project
+## Learning Laravel
 
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- **Demo:** [http://ecommerce.irfandev.xyz/login](http://ecommerce.irfandev.xyz/login)
-<br>
-Credentials :
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-    ```php
-    email: admin@gmail.com
-    password: admin@gmail.com
-    ```
----
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## ✅ Key Features
+## Laravel Sponsors
 
-### 📦 Inventory Module
-- Product Create/List with:
-  - Product Name, Purchase Price, Sell Price, Opening Stock
-- Real-time Stock Management:
-  - Stock reduced on sale
-  - Remaining quantity updated automatically
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
----
+### Premium Partners
 
-### 💰 Sales Module
-- Create sale with:
-  - Discount input
-  - 5% VAT auto-calculated (after discount)
-  - Paid amount input
-- Calculates:
-  - **Total Payable** = `(sell_price * quantity) - discount + VAT`
-  - **Due** = `Total Payable - Paid`
-- Stock automatically reduced after each sale
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
----
+## Contributing
 
-### 📊 Financial Report
-- Filterable by custom date range
-- Displays:
-  - ✅ **Total Sales**
-  - ✅ **Total Discount**
-  - ✅ **Total VAT**
-  - ✅ **Total Expenses** (based on purchase price × sold quantity)
-  - ✅ **Net Profit** = `Sales - Expenses - Discount`
-- Option for:
-  - **Summary Report**
-  - **Detailed Report** (sale-wise breakdown)
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
----
+## Code of Conduct
 
-### 📘 Accounting Journals
-Auto-managed journal breakdown per sale:
-- Sales Revenue
-- Discount Given
-- VAT Collected
-- Payment Received (Cash)
-- Remaining Due
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
----
+## Security Vulnerabilities
 
-## 📦 Sample Data (for testing)
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-### Initial Inventory:
-- Product: Example Item
-- Purchase Price: 100 TK
-- Sell Price: 200 TK
-- Opening Stock: 50 units
+## License
 
-### Sample Sale:
-- Sold Quantity: 10 units
-- Discount: 50 TK
-- VAT: 5% (on discounted amount)
-- Paid: 1000 TK
-
-
----
-
-## ⚙️ Installation Guide
-
-### Prerequisites:
-- PHP 8.2+
-- Composer
-- MySQL
-- Node.js & npm (for frontend build if used)
-
----
-
-### Setup Steps
-
-#### 1. Clone the repository :
-
-```bash
-git clone https://github.com/your-username/inventory-finance-system.git
-cd inventory-finance-system
-```
-
-#### 2. Install PHP dependencies
-
-```bash
-composer install
-```
-
-#### 3. Copy .env file and configure
-
-```bash
-cp .env.example .env
-```
-
-#### 4. Set database, app_url, etc.
-
-```bash
-APP_URL=your_root_url
-SSO_REDIRECT_URL=your_redirect_url
-
-DB_CONNECTION=sqlite
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=root
-DB_PASSWORD=
-
-# If your domain with https:// then comment out and set with proper data
-# If local machine, then comment the 3 lines
-SESSION_DOMAIN=.irfandev.xyz
-SESSION_SECURE_COOKIE=true
-SESSION_SAME_SITE=none
-```
-
-#### 5. Generate app key & run migrations
-
-```bash
-php artisan key:generate
-php artisan migrate --seed
-```
-
-
-#### 6. (Optional) Install frontend dependencies
-
-```bash
-npm install && npm run build
-
-```
-
-#### 7. Serve the application
-```bash
-php artisan serve
-```
-
-<br>
-
-## ✅ Test Case Screenshot
-
-This is a sample test result from running PEST tests:
-
-#### Product Test :
-
-run command : 
-```bash
-./vendor/bin/pest tests/Feature/ProductTest.php
-```
-
-![Test Case Screenshot](https://snipboard.io/6KcY9w.jpg)
-
-
-#### Sale Test :
-
-run command : 
-```bash
-./vendor/bin/pest tests/Feature/SaleTest.php
-```
-
-![Test Case Screenshot](https://snipboard.io/yluNnp.jpg)
-
-#### Report Test :
-
-run command : 
-```bash
-./vendor/bin/pest tests/Feature/ReportTest.php
-```
-
-![Test Case Screenshot](https://snipboard.io/zaHcEI.jpg)
-
-
-<br>
-
-## 👨‍💻 Author
-
-**Md Irfan Chowdhury** <br>
-PHP-Laravel Developer  <br>
-🔗 [LinkedIn Profile](https://www.linkedin.com/in/irfan-chowdhury/) | 📧 [irfanchowdhury80@gmail.com](irfanchowdhury80@gmail.com)
-# real-time-chat-app
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

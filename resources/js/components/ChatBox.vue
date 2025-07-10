@@ -8,8 +8,20 @@
             </div>
         </div>
         <div class="chat-input">
-              <input v-model="newMessage" @keyup.enter="sendMessage" placeholder="Type a message..." />
-              <button @click="sendMessage">Send</button>
+            <input
+                v-model="newMessage"
+                @keyup.enter="sendMessage"
+                :disabled="sending"
+                placeholder="Type a message..."
+            />
+            <!-- <button @click="sendMessage" :disabled="sending">
+                <span v-if="sending">Sending...</span>
+                <span v-else>Send</span>
+            </button> -->
+            <button @click="sendMessage" :disabled="sending">
+                <span v-if="sending" style="color: red;">Sending...</span>
+                <span v-else>Send</span>
+            </button>
         </div>
     </div>
 </template>
@@ -44,8 +56,11 @@ export default {
             },
             { deep: true }
         );
+
+        const sending = ref(false);
         const sendMessage = () => {
             if (newMessage.value.trim() !== "") {
+                sending.value = true;
                 axios
                     .post(`/messages/${props.receiver.id}`, {
                         message: newMessage.value,
@@ -53,6 +68,9 @@ export default {
                     .then((response) => {
                         messages.value.push(response.data);
                         newMessage.value = "";
+                    })
+                    .finally(() => {
+                        sending.value = false;
                     });
             }
         };
@@ -83,6 +101,7 @@ export default {
             messagesBox,
             sendMessage,
             formatTimestamp,
+            sending
         };
     },
 };
@@ -105,6 +124,16 @@ export default {
     overflow-y: auto;
     padding: 15px;
 }
+
+/* New */
+.chat-input input:disabled,
+.chat-input button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* X */
+
+
 .chat-input {
     display: flex;
     align-items: center;
@@ -142,4 +171,5 @@ export default {
     color: #aaa;
     margin-left: 10px;
   }
+
 </style>

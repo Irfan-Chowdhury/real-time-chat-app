@@ -1,44 +1,26 @@
 // import './bootstrap';
-// import { createApp } from 'vue';
-// import ChatApp from './components/ChatApp.vue';
 
-// const app = createApp({});
-// app.component('chat-app', ChatApp);
-// app.mount('#chat-app');
+// import Alpine from 'alpinejs';
 
+// window.Alpine = Alpine;
 
-
-
-
-// import './bootstrap';
-// import { createApp } from 'vue';
-// import ChatApp from './components/ChatApp.vue';
-
-// const app = createApp({});
-// app.component('chat-app', ChatApp);
-// app.mount('#chat-app');
-
-
-
-
-
-// import { createApp } from 'vue';
-
-// createApp({
-//     template: `<h3 style="color:red">Vue is Working</h3>`
-// }).mount('#chat-app');
-
-// console.log(78);
+// Alpine.start();
 
 
 import './bootstrap';
 import { createApp } from 'vue';
-import ChatApp from './components/ChatApp.vue';
+import ChatBox from './components/ChatBox.vue';
 
-console.log('Vue is mounting...');
-createApp(ChatApp).mount('#chat-app');
-
+createApp({}).component('chat-box', ChatBox).mount('#app');
 
 
 
 
+// import { createApp } from 'vue'
+// import ChatBox from './components/ChatBox.vue'
+
+// const app = createApp({});
+// app.component('chat-box', ChatBox);
+// app.mount('#app');
+
+// createApp(ChatBox).mount('#chat-box');

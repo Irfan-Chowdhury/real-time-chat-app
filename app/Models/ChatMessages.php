@@ -3,15 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Message extends Model
+class ChatMessages extends Model
 {
-    protected $fillable = [
-        'sender_id',
-        'receiver_id',
-        'message',
-        'is_read'
-    ];
+    use HasFactory;
+
+    protected $fillable = ['sender_id', 'receiver_id', 'text'];
 
     public function sender()
     {
@@ -22,5 +20,4 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'receiver_id');
     }
-
 }

@@ -32,7 +32,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/chat/{user}', function (User $user){
     return view('chat', [
-        'user' => $user
+        'user' => $user,
+        'users' => User::where('id', '!=', Auth::id())->get()
     ]);
 })->middleware(['auth', 'verified'])->name('chat');
 

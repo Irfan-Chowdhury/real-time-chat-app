@@ -12,17 +12,6 @@
               <button @click="sendMessage">Send</button>
         </div>
     </div>
-
-    <!--        <div v-for="(message, index) in messages" :key="index" :class="['chat-message', { 'own-message': message.sender_id === sender.id }]">
-                {{ message.text }}
-                <span class="timestamp">{{ formatTimestamp(message.created_at) }}</span>
-              </div>
-            </div>
-            <div class="chat-input">
-              <input v-model="newMessage" @keyup.enter="sendMessage" placeholder="Type a message..." />
-              <button @click="sendMessage">Send</button>
-            </div> -->
-
 </template>
 
 <script>

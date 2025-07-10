@@ -1,11 +1,7 @@
-Absolutely! Here's a **clean, professional, and production-ready `README.md`** file tailored for your **Laravel + Vue Real-Time Chat Application**, using Blade for most pages and Vue.js for the chat module only.
 
----
-
-````markdown
 # 💬 Real-Time Private Chat Application
 
-A full-stack private chat application using **Laravel 12**, **Vue 3**, **Pusher**, and **Laravel Sanctum**. Authenticated users can send and receive messages in real-time using private channels. Vue is used for the real-time chat component, while Blade handles all other views.
+A full-stack private chat application using **Laravel 12**, **Vue 3**, **Pusher**. Authenticated users can send and receive messages in real-time using private channels. Vue is used for the real-time chat component, while Blade handles all other views.
 
 ---
 
@@ -27,12 +23,11 @@ A full-stack private chat application using **Laravel 12**, **Vue 3**, **Pusher*
 
 | Layer        | Tools                                  |
 |--------------|-----------------------------------------|
-| Backend      | Laravel 12, Laravel Sanctum             |
+| Backend      | Laravel 12           |
 | Frontend     | Blade + Vue 3                           |
 | Real-Time    | Laravel Echo, Pusher                    |
 | Auth         | Laravel Breeze (Blade stack)            |
-| Styling      | Tailwind CSS                            |
-| Database     | MySQL (or any supported by Laravel)     |
+| Database     | MySQL      |
 | Dev Tools    | Vite, Axios, Postman                    |
 
 ---
@@ -62,12 +57,9 @@ Update your `.env` with the following:
 ```env
 APP_URL=http://127.0.0.1:8000
 
-# Sanctum / Session
-SESSION_DOMAIN=127.0.0.1
-SANCTUM_STATEFUL_DOMAINS=127.0.0.1:8000
 
 # Broadcasting
-BROADCAST_DRIVER=pusher
+BROADCAST_CONNECTION=pusher
 
 PUSHER_APP_ID=your_app_id
 PUSHER_APP_KEY=your_app_key
@@ -98,6 +90,8 @@ Install and build Breeze Blade stack:
 ```bash
 php artisan breeze:install blade
 npm run dev
+php artisan queue:listen
+php artisan serve
 ```
 
 ---
@@ -130,7 +124,7 @@ window.Echo = new Echo({
 
 ---
 
-### 7. 📡 Authorize Broadcast Channels
+<!-- ### 7. 📡 Authorize Broadcast Channels
 
 In `routes/channels.php`:
 
@@ -142,7 +136,7 @@ Broadcast::channel('chat.{receiverId}', function (Request $request, $receiverId)
 });
 ```
 
----
+--- -->
 
 ### 8. 🖥️ Run Application
 
@@ -176,7 +170,6 @@ resources/
 │   └── components/
 │       └── ChatApp.vue    # Chat interface
 routes/
-├── api.php                # API routes
 ├── web.php                # Web routes
 └── channels.php           # Broadcast channel auth
 app/
@@ -218,14 +211,4 @@ This project is open-source and available under the [MIT license](LICENSE).
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Laravel Echo](https://laravel.com/docs/broadcasting)
 
-```
-
----
-
-Let me know if you'd like this tailored for:
-- Deployment (e.g., Forge, Vercel, etc.)
-- Docker usage
-- or automatic testing setup (e.g., PEST)
-
-I can also generate a PDF or Markdown preview if needed.
 ```

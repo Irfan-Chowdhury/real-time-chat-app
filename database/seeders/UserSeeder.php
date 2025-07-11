@@ -25,28 +25,28 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Irfan Chowdhury',
                 'email' => 'user123@gmail.com',
-                'password' => Hash::make('user123'),
+                'password' => Hash::make('user12345'),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Arman Khan',
                 'email' => 'arman123@gmail.com',
-                'password' => Hash::make('arman123'),
+                'password' => Hash::make('arman12345'),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Shuzon Khan',
                 'email' => 'shuzon123@gmail.com',
-                'password' => Hash::make('shuzon123'),
+                'password' => Hash::make('shuzon12345'),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Mr Karim',
                 'email' => 'karim123@gmail.com',
-                'password' => Hash::make('karim123'),
+                'password' => Hash::make('karim12345'),
                 'created_at' => now(),
                 'updated_at' => now()
             ],

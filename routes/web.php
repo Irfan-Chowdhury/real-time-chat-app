@@ -11,6 +11,8 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/chat/{user}', [ChatController::class, 'viewPage'])->middleware(['auth', 'verified'])->name('chat');
+
 Route::resource('messages/{user}', ChatController::class, ['only' => ['index', 'store']])->middleware(['auth']);
+
 
 require __DIR__.'/auth.php';

@@ -22,9 +22,10 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'email' => 'admin@gmail.com',
+            'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => 'admin@gmail.com', //Hash::make('admin@gmail.com'),
+            // 'password' => static::$password ??= Hash::make('password'),
+            'password' => bcrypt('password'),
             'remember_token' => Str::random(10),
         ];
     }

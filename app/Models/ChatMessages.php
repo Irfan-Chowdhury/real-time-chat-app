@@ -9,7 +9,11 @@ class ChatMessages extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sender_id', 'receiver_id', 'text'];
+    protected $fillable = ['sender_id', 'receiver_id', 'text','is_read'];
+
+    protected $casts = [
+        'is_read' => 'boolean',
+    ];
 
     public function sender()
     {
@@ -20,4 +24,6 @@ class ChatMessages extends Model
     {
         return $this->belongsTo(User::class, 'receiver_id');
     }
+
+
 }

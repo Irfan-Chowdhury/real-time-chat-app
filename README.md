@@ -88,7 +88,7 @@ A real-time private messaging system built using **Laravel**, **Vue.js**, and **
 <br>
 
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -186,12 +186,67 @@ php artisan config:cache
 
 <br>
 
+## Credentials 
 
-## 📸 Screenshots
 
-> Add UI screenshots here for chat, user list, message bubbles, etc.
+### User -1
+Open with normal window.
+
+    - Email: admin@gmail.com
+    - Password : admin12345
+
+### User -2
+Open with private window.
+
+    - Email: user123@gmail.com
+    - Password : user12345
 
 ---
+
+<br>
+
+
+## 📸 Screenshots Of Testing
+
+### ChatServiceTest
+
+![Chat App ChatServiceTest](https://snipboard.io/RazrTA.jpg)
+
+
+### Dashboard Test
+
+![Dashboard Test](https://snipboard.io/JSGLfE.jpg)
+
+> Authenticated user can view dashboard and see users list
+
+
+### Chat Page Test
+
+![Dashboard Test](https://snipboard.io/J0Q1NS.jpg)
+
+> Chat page loads with user and users list using ChatService
+
+
+---
+
+<br>
+
+## 📸 Screenshots Of Chat
+
+### With Notification
+
+![Notification](https://snipboard.io/UHR9lX.jpg)
+
+
+### Conversation between two persons
+
+![Conversations](https://snipboard.io/Kj8JFE.jpg)
+
+
+
+
+---
+
 
 ## 📜 License
 

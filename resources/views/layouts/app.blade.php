@@ -37,43 +37,8 @@
 <body>
     <div id="app" class="bg-light min-vh-100 d-flex flex-column">
         {{-- Navbar --}}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-            <div class="container">
-                <a class="navbar-brand font-weight-bold" href="{{ route('dashboard') }}">
-                    <x-application-logo class="h-9 w-auto text-white" />
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-white {{ request()->routeIs('dashboard') ? 'font-weight-bold' : '' }}" href="{{ route('dashboard') }}">
-                                {{ __('Dashboard') }}
-                            </a>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-nav ml-auto">
-                        @auth
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown">
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item">{{ __('Log Out') }}</button>
-                                    </form>
-                                </div>
-                            </li>
-                        @endauth
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @include('components.navbar')
 
         {{-- Optional Header --}}
         @isset($header)
@@ -90,35 +55,7 @@
                 <div class="row min-vh-80">
 
                     {{-- Sidebar --}}
-                    <div class="col-md-3 mb-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-header bg-primary text-white font-weight-bold">
-                                Contacts
-                            </div>
-                            <div class="sidebar">
-                                <ul class="list-group list-group-flush">
-                                    @foreach ($users as $user)
-                                        <li class="list-group-item p-0
-                                            {{ request()->routeIs('chat') && request()->route('chat') == $user->id ? 'active-chat' : '' }}
-                                            {{ !empty($user->unread_count) && $user->unread_count > 0 ? 'unread-highlight font-weight-bold' : '' }}">
-                                            <a href="{{ route('chat', $user) }}" class="d-flex justify-content-between align-items-center px-3 py-3 text-decoration-none text-body hover-bg-light">
-                                                <div>
-                                                    <div class="text-dark">{{ $user->name }}</div>
-                                                    <div class="small text-muted">{{ $user->email }}</div>
-                                                </div>
-
-                                                @if(!empty($user->unread_count) && $user->unread_count > 0)
-                                                    <span class="badge badge-danger badge-pill">
-                                                        {{ $user->unread_count }}
-                                                    </span>
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @include('components.sidebar')
 
                     {{-- Content --}}
                     @yield('content')

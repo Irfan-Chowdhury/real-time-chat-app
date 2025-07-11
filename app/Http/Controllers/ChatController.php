@@ -14,6 +14,13 @@ class ChatController extends Controller
     {
         $users = User::where('id', '!=', Auth::id())->get();
 
+        $users->each(function ($user)  {
+            $user->unread_count = ChatMessages::where('sender_id', $user->id)
+                ->where('receiver_id', Auth::id())
+                ->where('is_read', false)
+                ->count();
+        });
+
         return view('chat', compact('user','users'));
     }
 
@@ -24,6 +31,12 @@ class ChatController extends Controller
             ->whereIn('receiver_id', [Auth::id(), $user->id])
             ->get();
 
+        // Mark all messages from this user as read
+        ChatMessages::where('sender_id', $user->id)
+            ->where('receiver_id', Auth::id())
+            ->where('is_read', false)
+            ->update(['is_read' => true]);
+
         return response()->json($messages);
     }
 
@@ -33,8 +46,11 @@ class ChatController extends Controller
             'sender_id' => Auth::id(),
             'receiver_id' => $user->id,
             'text' => $request->message,
+            'is_read' => false,
         ]);
+
         broadcast(new MessageSent($user, $message))->toOthers();
+
         return response()->json($message);
     }
 }

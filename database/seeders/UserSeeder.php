@@ -14,10 +14,29 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Irfan Chowdhury',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin@gmail.com'),
-        ]);
+        $data = [
+            [
+                'name' => 'Irfan Chowdhury',
+                'email' => 'user123@gmail.com',
+                'password' => Hash::make('user123'),
+            ],
+            [
+                'name' => 'Arman Khan',
+                'email' => 'arman123@gmail.com',
+                'password' => Hash::make('arman123'),
+            ],
+            [
+                'name' => 'Shuzon Khan',
+                'email' => 'shuzon123@gmail.com',
+                'password' => Hash::make('shuzon123'),
+            ],
+            [
+                'name' => 'Mr Karim',
+                'email' => 'karim123@gmail.com',
+                'password' => Hash::make('karim123'),
+            ],
+        ];
+
+        User::insert($data);
     }
 }

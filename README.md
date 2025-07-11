@@ -3,39 +3,94 @@
 
 A real-time private messaging system built using **Laravel**, **Vue.js**, and **Pusher**, featuring real-time communication, typing indicators, and unread message counts.
 
+---
+
+<br>
+
+## 🛠️ Features
+
+✅ Authenticated user system (Laravel Breeze - API)  
+✅ One-to-one real-time private chat  
+✅ Unread message count beside users  
+✅ Timestamp for each message  
+✅ Auto-scroll and loading indicators  
+✅ RESTful APIs for messaging and user list (except self)
 
 ---
 
-## 📌 Features
+<br>
 
-- ✅ User authentication (Laravel Breeze + Sanctum)
-- ✅ List of all users (except self)
-- ✅ One-to-one private chat
-- ✅ Real-time messaging with Pusher & Laravel Echo
-- ✅ Messages stored in database
-- ✅ Vue 3-powered chat module (Composition API)
-- ✅ Blade used for all other pages
-- ✅ Auto-scroll, message timestamps, loading states
-- ✅ Secure API (protected via Sanctum middleware)
+## 🚀 Technologies & Tools Used
+
+### 🧠 Backend
+- **PHP-8.2**
+- **Laravel 12**
+- **Laravel Breeze** – For authentication
+- **Laravel Broadcasting** – For real-time events
+- **Pusher** – WebSocket-based real-time messaging
+- **MySQL** – Message and user data storage
+
+### 🎨 Frontend
+- **Vue.js 3** 
+- **Vite** – Lightning-fast development
+- **Axios** – HTTP client
+- **Laravel Echo + Pusher** – For listening to broadcast events
+- **Bootstrap 4** – UI styling
+
+### 🎯 Decisions Made
+- Utilized **Laravel Events and Broadcasting** to keep backend scalable and decoupled.
+- Messages are stored in DB for persistence and future loading.
+- Optimized message scroll and real-time update for smooth UX.
 
 ---
 
-## 🧰 Tech Stack
+<br>
 
-| Layer        | Tools                                  |
-|--------------|-----------------------------------------|
-| Backend      | Laravel 12           |
-| Frontend     | Blade + Vue 3                           |
-| Real-Time    | Laravel Echo, Pusher                    |
-| Auth         | Laravel Breeze (Blade stack)            |
-| Database     | MySQL      |
-| Dev Tools    | Vite, Axios, Postman                    |
+
+## 🏗️ Architecture & Folder Structure
+
+### Backend (Laravel)
+```
+
+/app
+├── Events/MessageSent.php         # Broadcasts message event
+├── Http/Controllers/API/
+      ├── Auth/AuthenticatedSessionController.php # Handles User Authentication 
+      ├── ChatController.php       # Handles sending and 
+      ├── DashboardController.php  # To view the dashboard
+├── Models
+   ├──ChatMessage.php         # Message model
+   ├──User.php                # User model
+/config
+└── broadcasting.php               # Pusher configuration
+/routes
+├── auth.php                        # Authentication related routes
+├── web.php                        # Web routes
+
+```
+
+### Frontend (Vue 3 + Vite)
+```
+/resources
+   └── js
+      ├── components/
+      │     ├── ChatBox.vue              # Displays chat messages
+      ├── app.js                         # Vue app entry point
+   └── views
+      ├── auth/login                     # Login Page
+      ├── layouts                        # Layout of the chat app page
+      ├── chat.blade.php                 # Main component of chat page
+      ├── dashboard.blade.php            # The dashboard page
+```
 
 ---
+
+<br>
+
 
 ## 🚀 Getting Started
 
-### 1. 🔄 Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone git@github.com:Irfan-Chowdhury/real-time-chat-app.git
@@ -51,7 +106,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-### 3. 🛠️ Environment Configuration
+### 3. Environment Configuration
 
 Update your `.env` with the following:
 
@@ -62,29 +117,27 @@ APP_URL=http://127.0.0.1:8000
 # Broadcasting
 BROADCAST_CONNECTION=pusher
 
+DB_CONNECTION=mysql
+DB_DATABASE=your_db
+DB_USERNAME=your_user
+DB_PASSWORD=your_password
+
 PUSHER_APP_ID=your_app_id
 PUSHER_APP_KEY=your_app_key
 PUSHER_APP_SECRET=your_app_secret
 PUSHER_APP_CLUSTER=your_app_cluster
-
-# Vite access
-VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
-VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
 ---
 
-### 4. 🧱 Database Setup
+### 4. Database Setup
 
 ```bash
-php artisan migrate
+php artisan migrate --seed
 ```
-
-(Optional) Seed users manually or via factory.
-
 ---
 
-### 5. 🔑 Authentication (Laravel Breeze)
+### 5. Run the Application
 
 Install and build Breeze Blade stack:
 
@@ -98,7 +151,9 @@ php artisan serve
 
 ---
 
-### 6. Testing (PEST Framework)
+
+
+### 6. Test by PEST Framework (Optional)
 
 **Step 1:** Create the file
 
@@ -129,74 +184,8 @@ php artisan config:cache
 ./vendor/bin/pest
 ```
 
+<br>
 
-
----
-
-<!-- ### 6. 🔌 Install Real-Time Dependencies
-
-```bash
-# Laravel broadcasting server
-composer require pusher/pusher-php-server
-
-# Client-side Echo
-npm install laravel-echo pusher-js
-```
-
-In `resources/js/bootstrap.js`, add:
-
-```js
-import Echo from 'laravel-echo';
-import Pusher from 'pusher-js';
-
-window.Pusher = Pusher;
-
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: import.meta.env.VITE_PUSHER_APP_KEY,
-    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
-    forceTLS: true,
-});
-```
-
---- -->
-
-<!-- ### 7. 📡 Authorize Broadcast Channels
-
-In `routes/channels.php`:
-
-```php
-use Illuminate\Http\Request;
-
-Broadcast::channel('chat.{receiverId}', function (Request $request, $receiverId) {
-    return (int) $request->user()->id === (int) $receiverId;
-});
-```
-
---- -->
-
-### 8. 🖥️ Run Application
-
-```bash
-php artisan serve
-npm run dev
-```
-
-Access the app at: [http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)
-
----
-
----
-
-<!-- ## 🌟 Optional Enhancements
-
-* Typing indicator ("User is typing...")
-* Unread message count beside users
-* Redis + Queue broadcasting
-* Notification system
-* Responsive layout for mobile devices
-
---- -->
 
 ## 📸 Screenshots
 
@@ -212,10 +201,10 @@ This project is open-source and available under the [MIT license](LICENSE).
 
 ## 🙏 Credits
 
+
 * [Laravel](https://laravel.com/)
 * [Vue.js](https://vuejs.org/)
 * [Pusher](https://pusher.com/)
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Laravel Echo](https://laravel.com/docs/broadcasting)
 
-```

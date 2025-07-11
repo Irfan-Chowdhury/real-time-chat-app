@@ -11,7 +11,7 @@ A real-time private messaging system built using **Laravel**, **Vue.js**, and **
 
 <br>
 
-## 🛠️ Features
+## Features
 
 ✅ Authenticated user system (Laravel Breeze - API)  
 ✅ One-to-one real-time private chat  
@@ -24,9 +24,9 @@ A real-time private messaging system built using **Laravel**, **Vue.js**, and **
 
 <br>
 
-## 🚀 Technologies & Tools Used
+## Technologies & Tools Used
 
-### 🧠 Backend
+### Backend
 - **PHP-8.2**
 - **Laravel 12**
 - **Laravel Breeze** – For authentication
@@ -34,14 +34,14 @@ A real-time private messaging system built using **Laravel**, **Vue.js**, and **
 - **Pusher** – WebSocket-based real-time messaging
 - **MySQL** – Message and user data storage
 
-### 🎨 Frontend
+### Frontend
 - **Vue.js 3** 
 - **Vite** – Lightning-fast development
 - **Axios** – HTTP client
 - **Laravel Echo + Pusher** – For listening to broadcast events
 - **Bootstrap 4** – UI styling
 
-### 🎯 Decisions Made
+### Decisions Made
 - Utilized **Laravel Events and Broadcasting** to keep backend scalable and decoupled.
 - Messages are stored in DB for persistence and future loading.
 - Optimized message scroll and real-time update for smooth UX.
@@ -51,7 +51,7 @@ A real-time private messaging system built using **Laravel**, **Vue.js**, and **
 <br>
 
 
-## 🏗️ Architecture & Folder Structure
+## Architecture & Folder Structure
 
 ### Backend (Laravel)
 ```
@@ -99,9 +99,9 @@ A real-time private messaging system built using **Laravel**, **Vue.js**, and **
 ```bash
 git clone git@github.com:Irfan-Chowdhury/real-time-chat-app.git
 cd real-time-chat-app
-````
+```
 
-### 2. ⚙️ Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 composer install
@@ -208,7 +208,7 @@ Open with private window.
 <br>
 
 
-## 📸 Screenshots Of Testing
+## Screenshots Of Testing
 
 ### ChatServiceTest
 
@@ -233,7 +233,7 @@ Open with private window.
 
 <br>
 
-## 📸 Screenshots Of Chat
+## 📸 Screenshots Of Chat Application
 
 ### With Notification
 
@@ -250,13 +250,13 @@ Open with private window.
 ---
 
 
-## 📜 License
+## License
 
 This project is open-source and available under the [MIT license](LICENSE).
 
 ---
 
-## 🙏 Credits
+## Credits
 
 * [Laravel](https://laravel.com/)
 * [Vue.js](https://vuejs.org/)

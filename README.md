@@ -1,5 +1,9 @@
 
-# 💬 Real-Time Chat Application
+<div align="center">
+
+<h1> 💬 Real-Time Chat Application</h1>
+
+</div
 
 A real-time private messaging system built using **Laravel**, **Vue.js**, and **Pusher**, featuring real-time communication, typing indicators, and unread message counts.
 
@@ -139,8 +143,6 @@ php artisan migrate --seed
 
 ### 5. Run the Application
 
-Install and build Breeze Blade stack:
-
 
 ```bash
 npm run dev
@@ -256,10 +258,8 @@ This project is open-source and available under the [MIT license](LICENSE).
 
 ## 🙏 Credits
 
-
 * [Laravel](https://laravel.com/)
 * [Vue.js](https://vuejs.org/)
 * [Pusher](https://pusher.com/)
-* [Tailwind CSS](https://tailwindcss.com/)
 * [Laravel Echo](https://laravel.com/docs/broadcasting)
 

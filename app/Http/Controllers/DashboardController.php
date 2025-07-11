@@ -2,24 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ChatMessages;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\ChatService;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(ChatService $chatService)
     {
-        $users = User::where('id', '!=', Auth::id())->get();
+        $users = $chatService->getOtherUsersWithUnreadCounts();
 
-        $users->each(function ($user)  {
-            $user->unread_count = ChatMessages::where('sender_id', $user->id)
-                ->where('receiver_id', Auth::id())
-                ->where('is_read', false)
-                ->count();
-        });
-
-        return view('dashboard',compact('users'));
+        return view('dashboard', compact('users'));
     }
 }

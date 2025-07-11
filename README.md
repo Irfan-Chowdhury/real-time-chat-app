@@ -1,7 +1,8 @@
 
-# 💬 Real-Time Private Chat Application
+# 💬 Real-Time Chat Application
 
-A full-stack private chat application using **Laravel 12**, **Vue 3**, **Pusher**. Authenticated users can send and receive messages in real-time using private channels. Vue is used for the real-time chat component, while Blade handles all other views.
+A real-time private messaging system built using **Laravel**, **Vue.js**, and **Pusher**, featuring real-time communication, typing indicators, and unread message counts.
+
 
 ---
 
@@ -37,8 +38,8 @@ A full-stack private chat application using **Laravel 12**, **Vue 3**, **Pusher*
 ### 1. 🔄 Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/chat-app.git
-cd chat-app
+git clone git@github.com:Irfan-Chowdhury/real-time-chat-app.git
+cd real-time-chat-app
 ````
 
 ### 2. ⚙️ Install Dependencies
@@ -87,16 +88,52 @@ php artisan migrate
 
 Install and build Breeze Blade stack:
 
+
 ```bash
-php artisan breeze:install blade
 npm run dev
 php artisan queue:listen
 php artisan serve
 ```
+<!-- php artisan breeze:install blade -->
 
 ---
 
-### 6. 🔌 Install Real-Time Dependencies
+### 6. Testing (PEST Framework)
+
+**Step 1:** Create the file
+
+```bash
+cp .env .env.testing 
+```
+or create manually 
+
+**Step 2:** Edit `.env.testing`
+Modify only the database section to use your test DB:
+
+
+```env
+DB_CONNECTION=mysql
+DB_DATABASE=chat-app-test
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
+
+**Step 3:** config cache (important)
+```bash
+php artisan config:clear
+php artisan config:cache
+```
+
+**Step 4:** run your test
+```bash
+./vendor/bin/pest
+```
+
+
+
+---
+
+<!-- ### 6. 🔌 Install Real-Time Dependencies
 
 ```bash
 # Laravel broadcasting server
@@ -122,7 +159,7 @@ window.Echo = new Echo({
 });
 ```
 
----
+--- -->
 
 <!-- ### 7. 📡 Authorize Broadcast Channels
 
@@ -145,43 +182,13 @@ php artisan serve
 npm run dev
 ```
 
-Access the app at: [http://127.0.0.1:8000/chat](http://127.0.0.1:8000/chat)
+Access the app at: [http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)
 
 ---
 
-## 📚 API Overview
-
-All API endpoints are protected by `auth:sanctum`.
-
-| Method | Endpoint             | Description                       |
-| ------ | -------------------- | --------------------------------- |
-| GET    | `/api/users`         | List all users (excluding self)   |
-| GET    | `/api/messages/{id}` | Get all messages with user `{id}` |
-| POST   | `/api/messages`      | Send a new message                |
-
 ---
 
-## 💻 Folder Structure
-
-```
-resources/
-├── js/
-│   ├── app.js             # Vue entry
-│   └── components/
-│       └── ChatApp.vue    # Chat interface
-routes/
-├── web.php                # Web routes
-└── channels.php           # Broadcast channel auth
-app/
-├── Events/MessageSent.php # Real-time event
-├── Models/Message.php     # Message model
-└── Http/
-    └── Controllers/ChatController.php
-```
-
----
-
-## 🌟 Optional Enhancements
+<!-- ## 🌟 Optional Enhancements
 
 * Typing indicator ("User is typing...")
 * Unread message count beside users
@@ -189,7 +196,7 @@ app/
 * Notification system
 * Responsive layout for mobile devices
 
----
+--- -->
 
 ## 📸 Screenshots
 

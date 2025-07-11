@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
@@ -23,26 +24,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-      'users' => User::where('id', '!=', Auth::id())->get()
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/chat/{user}', function (User $user){
-    return view('chat', [
-        'user' => $user,
-        'users' => User::where('id', '!=', Auth::id())->get()
-    ]);
-})->middleware(['auth', 'verified'])->name('chat');
-
-Route::resource(
-    'messages/{user}',
-    ChatController::class, ['only' => ['index', 'store']]
-)->middleware(['auth']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
+Route::get('/chat/{user}', [ChatController::class, 'viewPage'])->middleware(['auth', 'verified'])->name('chat');
+Route::resource('messages/{user}',ChatController::class, ['only' => ['index', 'store']])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

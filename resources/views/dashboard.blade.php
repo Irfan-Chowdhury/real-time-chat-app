@@ -1,43 +1,5 @@
+
 {{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{Auth::user()->name}}
-        </h2>
-    </x-slot>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        @foreach ($users as $user)
-                            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                                <div class="p-6">
-                                    <div class="flex items-center">
-                                        <a href="{{ route('chat', $user) }}">
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900 dark:text-gray-100">
-                                                    {{ $user->name }}
-                                                </div>
-                                                <div class="text-sm text-gray-500 dark:text-gray-400">
-                                                    {{ $user->email }}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}
-
-
-
-{{-- dashboard.blade.php --}}
-<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ Auth::user()->name }}
@@ -45,10 +7,8 @@
     </x-slot>
 
     <div class="flex h-full min-h-[80vh]">
-        {{-- Sidebar --}}
         <x-user-sidebar :users="$users" />
 
-        {{-- Main Content --}}
         <div class="flex-1 p-6 bg-white dark:bg-gray-800 shadow-md">
             <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Dashboard</h3>
             <p class="text-gray-700 dark:text-gray-300">
@@ -56,4 +16,48 @@
             </p>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout> --}}
+
+
+
+{{-- @extends('layouts.app')
+@section('content')
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-body bg-white">
+                    <h3 class="h5 font-weight-bold mb-3">Dashboard</h3>
+                    <p class="text-muted">
+                        Welcome to your dashboard, {{ Auth::user()->name }}.
+                    </p>
+                </div>
+            </div>
+        </div>
+@endsection --}}
+
+
+
+
+@extends('layouts.app')
+
+@section('content')
+    <div class="col-md-9">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-bottom">
+                <h3 class="h5 font-weight-bold mb-0">
+                    <i class="fas fa-tachometer-alt text-primary mr-2"></i> Dashboard
+                </h3>
+            </div>
+            <div class="card-body bg-white">
+                <p class="text-muted">
+                    👋 Welcome back, <strong>{{ Auth::user()->name }}</strong>! Here's your dashboard overview.
+                </p>
+                <hr>
+                <p class="text-secondary">
+                    You can use the sidebar to access chat and navigate through other features.
+                </p>
+            </div>
+        </div>
+    </div>
+@endsection
+
+

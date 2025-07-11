@@ -10,13 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
+    public function viewPage(User $user)
+    {
+        $users = User::where('id', '!=', Auth::id())->get();
+
+        return view('chat', compact('user','users'));
+    }
+
     public function index(User $user)
     {
         $messages = ChatMessages::with(['sender', 'receiver'])
             ->whereIn('sender_id', [Auth::id(), $user->id])
             ->whereIn('receiver_id', [Auth::id(), $user->id])
             ->get();
-            
+
         return response()->json($messages);
     }
 

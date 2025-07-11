@@ -68,7 +68,7 @@
 
 
 
-{{--
+
 @extends('layouts.app')
 
 @section('content')
@@ -90,38 +90,5 @@
 </div>
 
     @vite('resources/js/app.js')
-@endsection --}}
-
-
-
-
-
-@extends('layouts.app')
-
-@section('content')
-    <div class="col-md-9">
-        <div class="card shadow-sm border-0">
-            <div class="card-header bg-primary text-white font-weight-bold d-flex align-items-center justify-content-between">
-                <span><i class="fas fa-comments mr-2"></i> Chat with {{ $user->name }}</span>
-                <small class="text-white-50">{{ $user->email }}</small>
-            </div>
-
-            <div class="card-body bg-white p-4" style="height: 65vh; overflow-y: auto;">
-                <div id="app">
-                    <chat-box
-                        :receiver='@json($user)'
-                        :sender='@json(Auth::user())'
-                    />
-                </div>
-            </div>
-
-            <div class="card-footer bg-light">
-                <small class="text-muted">Type a message below and hit enter to send.</small>
-            </div>
-        </div>
-    </div>
-
-    @vite('resources/js/app.js')
 @endsection
-
 

@@ -13,54 +13,47 @@
     <!-- jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         .hover-bg-light:hover {
             background-color: #f8f9fa !important;
         }
-        .min-vh-80 {
-            min-height: 80vh;
-        }
-        .sidebar {
-            max-height: 100%;
-            overflow-y: auto;
-        }
-        .active-chat {
-            background-color: #e9f5ff;
-        }
     </style>
 </head>
 <body>
     <div id="app" class="bg-light min-vh-100 d-flex flex-column">
-        {{-- Navbar --}}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        {{-- Navigation --}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
             <div class="container">
-                <a class="navbar-brand font-weight-bold" href="{{ route('dashboard') }}">
-                    <x-application-logo class="h-9 w-auto text-white" />
+                <a class="navbar-brand" href="{{ route('dashboard') }}">
+                    <x-application-logo class="h-9 w-auto" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Left Side -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white {{ request()->routeIs('dashboard') ? 'font-weight-bold' : '' }}" href="{{ route('dashboard') }}">
+                            <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                                 {{ __('Dashboard') }}
                             </a>
                         </li>
                     </ul>
 
+                    <!-- Right Side -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
                         @auth
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <button type="submit" class="dropdown-item">{{ __('Log Out') }}</button>
@@ -73,7 +66,6 @@
             </div>
         </nav>
 
-        {{-- Optional Header --}}
         @isset($header)
             <header class="bg-white border-bottom shadow-sm py-3">
                 <div class="container">
@@ -82,33 +74,35 @@
             </header>
         @endisset
 
-        {{-- Main --}}
+
+
         <main class="flex-grow-1 py-4">
             <div class="container">
                 <div class="row min-vh-80">
 
-                    {{-- Sidebar --}}
-                    <div class="col-md-3 mb-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-header bg-primary text-white font-weight-bold">
-                                Contacts
-                            </div>
-                            <div class="sidebar">
-                                <ul class="list-group list-group-flush">
-                                    @foreach ($users as $user)
-                                        <li class="list-group-item p-0 {{ request()->routeIs('chat') && request()->route('chat') == $user->id ? 'active-chat' : '' }}">
-                                            <a href="{{ route('chat', $user) }}" class="d-block px-3 py-3 text-decoration-none text-body hover-bg-light">
-                                                <div class="font-weight-bold text-dark">{{ $user->name }}</div>
-                                                <div class="small text-muted">{{ $user->email }}</div>
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="w-100 w-sm-25 bg-light border-right h-100 overflow-auto">
+                                    <div class="card-header font-weight-bold">
+                                        Contacts
+                                    </div>
+
+                                    <ul class="list-group list-group-flush">
+                                        @foreach ($users as $user)
+                                            <li class="list-group-item p-0">
+                                                <a href="{{ route('chat', $user) }}" class="d-block px-3 py-3 text-decoration-none text-body hover-bg-light">
+                                                    <div class="font-weight-bold text-dark">{{ $user->name }}</div>
+                                                    <div class="small text-muted">{{ $user->email }}</div>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {{-- Content --}}
                     @yield('content')
                 </div>
             </div>
